@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>task</title>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta name="description" content="知乎？知乎！" />
+<meta content="task" name="keywords" />
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+<script type="text/javascript" src="json.js"></script>
+</head>
+<body>
+	<div class="Box" id="id_Box">
+		<div class="main" id="id_main">
+			<div class="nav" id="id_nav">
+				<div class="nav_top" id="id_nav_top">
+					<input type="text" value="您想要邀请的人" alt="搜索框"/>
+					<p id="p_first">您还没邀请其他人。。</p>
+				</div>
+				<div class="content" id="id_content">
+					<h2>推荐人选:</h2>
+					<div class="items" id="id_items0">
+							<div class="pic"><img src="images/2.png"></div>
+							<div class="pic_aside">
+								<div class="span_1" id="s_0"><span>fsafsa</span></div>
+								<div class="span_2" id="i_0"><span>fsafsa</span></div>
+							</div>
+							<div class="button" ><input id ="button_0" type="button" value="邀请回答"/>
+							</div>
+					</div>
+						<div class="items" id="id_items1">
+							<div class="pic"><img src="images/2.png"></div>
+							<div class="pic_aside">
+								<div class="span_1" id="s_1"><span>fsafsa</span></div>
+								<div class="span_2" id="i_1"><span>fsafsa</span></div>
+							</div>
+							<div class="button" ><input id ="button_1" type="button" value="邀请回答"/></div>
+						</div>
+						<div class="items" id="id_items2">
+							<div class="pic"><img src="images/3.png"></div>
+							<div class="pic_aside">
+								<div class="span_1" id="s_2"><span>fsafsa</span></div>
+								<div class="span_2" id="i_2"><span>fsafsa</span></div>
+							</div>
+							<div class="button" ><input id ="button_2" type="button" value="邀请回答"/></div>
+						</div>
+						<div class="items" id="id_items3">
+							<div class="pic"><img src="images/4.png"></div>
+							<div class="pic_aside">
+								<div class="span_1" id="s_3"><span>fsafsa</span></div>
+								<div class="span_2" id="i_3"><span>fsafsa</span></div>
+							</div>
+							<div class="button" ><input id ="button_3" type="button" value="邀请回答"/></div>
+						</div>
+						<div class="items click" id="id_items4">
+							<div class="pic"><img src="images/5.png"></div>
+							<div class="pic_aside">
+								<div class="span_1" id="s_4"><span>fsafsa</span></div>
+								<div class="span_2" id="i_4"><span>fsafsa</span></div>
+							</div>
+							<div class="button" ><input id ="button_4" type="button" value="邀请回答"/></div>
+						</div>
+					<div class="items click" id="id_items5">
+							<div class="pic"><img src="images/6.png"></div>
+							<div class="pic_aside">
+								<div class="span_1" id="s_5"><span>fsafsa</span></div>
+								<div class="span_2" id="i_5"><span>fsafsa</span></div>
+							</div>
+							<div class="button"><input  id ="button_5" type="button" value="邀请回答"/></div>
+						</div>
+						<div class="items click" id="id_items6">
+							<div class="pic"><img src="images/7.png"></div>
+							<div class="pic_aside">
+								<div class="span_1" id="s_6"><span>fsafsa</span></div>
+								<div class="span_2" id="i_6"><span>fsafsa</span></div>
+							</div>
+							<div class="button" ><input id ="button_6" type="button" value="邀请回答"/></div>
+						</div>
+						<div class="items click" id="id_items7">
+							<div class="pic"><img src="images/8.png"></div>
+							<div class="pic_aside">
+								<div class="span_1" id="s_7"><span>fsafsa</span></div>
+								<div class="span_2" id="i_7"><span>fsafsa</span></div>
+							</div>
+							<div class="button"><input type="button" id ="button_7" value="邀请回答"/></div>
+						</div>
+					<p><strong>获取更多？按下有惊喜</strong><a href="#" id="a">yes</a></p>
+				</div><!--content结束-->
+			</div><!--nav结束-->
+		</div><!--main结束-->
+	</div>
+<script type="text/javascript">
+	//alert(jsonword.toString());
+//	window.onload=function(){//点击更多显示出隐藏的项
+		
+
+var clicknumber=0;
+var a_clicknumber = true;//用来标志收起还是展开
+var num=0;//邀请的人数
+self=this;
+//alert(this);   window
+var  a=document.getElementById("a");
+a.onclick=function()
+{
+	if(a_clicknumber==true)
+	{
+		for(k=4;k<8;k++)
+			{	
+				var id="id_items"+(k);
+				var conten=document.getElementById(id);
+				conten.style.display="block";
+				document.getElementById("a").innerHTML="no";
+			};
+		self.a_clicknumber =false;
+	}
+	else 
+	{
+		for(k=4;k<8;k++)
+		{	
+			var id="id_items"+(k);
+			var conten=document.getElementById(id);
+			conten.style.display="none";
+			document.getElementById("a").innerHTML = "yes";
+			self.a_clicknumber =true;
+		};
+	};
+};
+
+
+	
+	
+window.onload=function()
+{
+	for(i=0;i<8;i++)
+	{	
+		var g=i-3;
+		//alert(jsonword.invited[i-1].name);
+		var number="s_"+i;
+		var number_bottom="i_"+i;
+		var span=document.getElementById(number);
+		var span_bottom = document.getElementById(number_bottom);
+		if(i<3)
+		{
+			span.innerHTML="<span>"+jsonword.invited[i].name+" <span>";
+			span_bottom.innerHTML="<span>"+jsonword.invited[i].slug+" <span>";
+		}
+		else
+		{
+			span.innerHTML="<span>"+jsonword.recommended[g].name+"</span>";
+		};
+	};
+};
+
+var setClick = function()
+{
+	for(d=0;d<=7;d++)
+	{	
+		var button=document.getElementById("button_"+d);
+		button.onclick=function()
+		{
+			this.style.color="white";
+			if(this.getAttribute("value")=="邀请回答")
+			{
+				num++;
+				this.style.background = "#ccccdd";
+				this.setAttribute("value","取消邀请");
+			}
+			else
+			{
+				if(num<=0)
+					{num=0}else{num--};
+				this.style.background = "blue";
+				this.setAttribute("value","邀请回答");
+			};
+			var p=document.getElementById("p_first");
+			p.innerHTML="你已经邀请了"+num+"人";
+		};
+	};	
+};
+
+
+
+setClick();
+	
+	//var getelement=function(){
+	//	var document.
+	//};
+
+
+</script>
+</body>
+</html>

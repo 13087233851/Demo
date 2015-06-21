@@ -1,0 +1,88 @@
+.main,.title,.message,.contains,.item,input,h1,img,a{margin:0;padding:0;border:none;}
+.main{
+	width:820px;
+	margin:0 auto;
+	margin-top:150px;
+	border:2px solid #ccccff;
+	border-radius:5px;
+}
+.title{
+	position:relative;
+	margin-top:15px;
+}
+.title input{
+	width:150px;
+	height:30px;
+	border-radius: 5px;
+	font-size: 14px;
+	color:gray;
+	border:1px solid #ccccff;
+	vertical-align: middle;
+	margin-left:15px;
+}
+.message{
+	display:inline;
+	width:200px;
+	height:30px;
+	line-height:30px;
+	margin-left:20px;
+	position:relative;
+	font-size: 14px;
+
+}
+h1{
+	font-size:20px;
+	margin:10px 0 0 15px;
+}
+.contains{
+	height:80px;
+	width:400px;
+	position:relative;
+
+}
+.main .contains .pic{
+	width:40px;
+	height:40px;
+	position:relative;
+	margin-left:15px;
+	float:left;
+	top:50%;
+	margin-top:-20px;
+}
+.main .contains img{
+	width:36px;
+	height:36px;
+	position:relative;
+	border-radius: 2px;
+}
+.main .contains .item{
+	width:325px;
+	height:80px;
+	position:relative;
+	float:right;
+}
+.main .contains .item a{
+	position:relative;
+	width:100px;
+	height:30px;
+	top:15px;
+	font-size:20px;
+	color:blue;
+}
+.main .contains .item input{
+	position:absolute;
+	right:5px;
+	top:15px;
+	width:80px;
+	height:25px;
+	border-radius:5px;
+	background:blue;
+	line-height:25px;
+	font-size:16px;
+	color:white;
+}
+.main .contains .item p{
+	position:relative;
+	width:100px;
+	height:30px;
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html" charset="UTF-8"/>
+	<meta name="description" content="知乎task"/>
+	<meta name="keywords" content="知乎task">
+	<title>知乎task--PDD</title>
+	<link rel="short icon" href="images/task.ico" type="image/x-icon"/>
+	<link rel="stylesheet" href="css/style.css" type="text/css"/>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="task.js"></script>
+</head>
+<body>
+<div class="main" id="main_id">
+	<div class="title">
+		<input type="text" value="搜索你想要邀请的人"/>
+		<p class="message">您已经邀请了<a href="#"></a>、<a href="#"></a><span></span></p>
+	</div><!--title   顶端-->
+	<h1>推荐人选:</h1>
+	<div class="content" id="content_id">
+		<img></img>
+		<div class="contains">
+			<div class="pic">
+				<img src="images/1.png">
+			</div>
+			<div class="item item_1" id="item_1">
+				<a>dassd</a>
+				<p>asfasf</p>
+				<input type="button" value="邀请回答"/>
+			</div><!--单个的小块  item-->
+		</div><!--外层块  contains-->
+		<div class="contains">
+			<div class="pic">
+				<img src="images/1.png">
+			</div>
+			<div class="item item_2" id="item_2">
+				<a>dassd</a>
+				<p>asfasf</p>
+				<input type="button" value="邀请回答"/>
+			</div><!--单个的小块  item-->
+		</div><!--外层块  contains-->
+		<div class="contains">
+			<div class="pic">
+				<img src="images/1.png">
+			</div>
+			<div class="item item_3" id="item_3">
+				<a>dassd</a>
+				<p>asfasf</p>
+				<input type="button" value="邀请回答"/>
+			</div><!--单个的小块  item-->
+		</div><!--外层块  contains-->
+		<div class="contains">
+			<div class="pic">
+				<img src="images/1.png">
+			</div>
+			<div class="item item_4" id="item_4">
+				<a>dassd</a>
+				<p>asfasf</p>
+				<input type="button" value="邀请回答"/>
+			</div><!--单个的小块  item-->
+		</div><!--外层块  contains-->
+		<div class="contains">
+			<div class="pic">
+				<img src="images/1.png">
+			</div>
+			<div class="item item_5" id="item_5">
+				<a>dassd</a>
+				<p>asfasf</p>
+				<input type="button" value="邀请回答"/>
+			</div><!--单个的小块  item-->
+		</div><!--外层块  contains-->
+		<div class="contains">
+			<div class="pic">
+				<img src="images/1.png">
+			</div>
+			<div class="item item_6" id="item_6">
+				<a>dassd</a>
+				<p>asfasf</p>
+				<input type="button" value="邀请回答"/>
+			</div><!--单个的小块  item-->
+		</div><!--外层块  contains-->
+		<div class="contains">
+			<div class="pic">
+				<img src="images/1.png">
+			</div>
+			<div class="item item_7" id="item_7">
+				<a>dassd</a>
+				<p>asfasf</p>
+				<input type="button" value="邀请回答"/>
+			</div><!--单个的小块  item-->
+		</div><!--外层块  contains-->
+		<div class="contains">
+			<div class="pic">
+				<img src="images/1.png">
+			</div>
+			<div class="item item_0" id="item_0">
+				<a>dassd</a>
+				<p>asfasf</p>
+				<input type="button" value="邀请回答"/>
+			</div><!--单个的小块  item-->
+		</div><!--外层块  contains-->
+	</div><!--列表内容  content-->
+</div><!--main-->
+<script type="text/javascript">
+window.onload = function(){
+	//main.init($(".main"));
+	$.getJSON("./invite_panel.json",function(data){
+			var getName =function(){
+				var getInvite_name = function()
+				{
+					var name = new Array();
+					for(i=0;i<=2;i++)
+					{
+						var invited_str = data.invited[i].name;
+						name.push(invited_str);
+					};
+					
+					return name;
+				};
+				var getRecom_name = function()
+				{
+					var recom_name = new Array();
+					for(i=0;i<=3;i++){
+						recom_name.push(data.recommended[i].name);
+					};
+					return recom_name;
+				};
+				 return getInvite_name().concat(getRecom_name());
+			};
+			alert(getName());
+			var getBio = function()
+			{
+				var getInvite_bio = function()
+				{
+					var invite_bio = new Array();
+					for(i=0;i<=2;i++)
+					{
+						invite_bio.push(data.invited[i].bio);
+					};
+					return invite_bio;
+				};
+				var getRecom_bio = function(){
+					var recom_bio = new Array();
+					for(i=0;i<=3;i++)
+					{
+						recom_bio.push(data.recommended[i].bio);
+					};
+					return recom_bio;
+				};
+				return (getInvite_bio().concat(getRecom_bio()));
+			};
+			alert(getBio());
+	});//getjson
+};//onload
+
+
+</script>
+</body>
+</html>
