@@ -1,0 +1,187 @@
+<html>
+<head>
+	<title>zongzi</title>
+	<meta charset = "utf-8"/>
+	<link  href="./style.css" rel="stylesheet">
+
+</head>
+<body>
+	<div class="main">
+		<div class="c_zongzi_box" id="c_zongzi_box">
+			<div class="c_zongzi" id="c_zongzi"></div>
+			<div class="c_shengzi_1" id="c_shengzi"></div>
+			<div class="c_zongzirou" id="c_zongzirou"></div>
+			<div class="c_zuoye" id="c_zuoye"></div>
+			<div class="c_youye" id="c_youye"></div>
+			<div class="c_diye" id="c_diye"></div>
+
+			<div class="c_t_1" id="c_t_1"></div>
+			<div class="c_t_2" id="c_t_2"></div>
+		</div>
+		<div class="text" id="text">
+			<div class="caption" id="caption"></div>
+			<div class="to">慕课网的小伙伴们：</div>
+			<div class="msg">在端午节来临之际，小木给大家送心意来了，快快乐乐每一天
+				慕课网永远和你相伴</div>
+			<div class="from">小募</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+        //闪闪的效果是图片加载间隔造成的
+        //总结阶段：分析动画  画二维表格  时间和事件相对应的关系
+        //css动画实现有两种   transition:all 1s
+        //侦动画  keyframes  不同时间切换图片成动画
+
+		//DOM获取
+		var getElement = function(id){
+			return document.getElementById(id);
+		}
+
+
+		//时间轴构造器
+		var Timeline = function(){
+			this.order = [];
+			this.add = function(timeout,func,des){
+				this.order.push({
+					timeout:timeout,
+					func:func,
+					des:des,
+				});
+			}
+			this.start = function(cut){
+				for( s in this.order){
+					(function( me ){
+						var fn = me.func;
+						var timeout = me.timeout;
+						var des = me.des;
+						timeout = Math.max(timeout-((cut)||0),0);//没传入参数的时候  启用零
+
+						setTimeout(fn,timeout);
+						setTimeout(function(){
+							console.log('time->',timeout,'des->',des);
+						},timeout);
+					})(this.order[s])
+				}
+			}
+		}
+
+
+
+		//场景编写
+		//初始场景
+		var s1 = new Timeline();
+		s1.add(1,function(){
+			getElement("c_zongzi_box").className = "c_zongzi_box c_zongzi_box_rock";
+			getElement("c_shengzi").onclick = function(){
+				s2.start();
+				getElement("c_shengzi").onclick = function(){
+					//解除绳子再次被点击时的动作函数
+				}
+			}
+		},"first");
+
+
+		//粽子展开
+		var s2 = new Timeline();
+		s2.add(1,function(){//停止抖动
+			getElement("c_zongzi_box").className = "c_zongzi_box";
+			getElement("text").className = "text text_in c_zongzi_box_rock";//字幕进场
+		},"第二场景 停止抖动");
+
+
+		s2.add(100,function(){//以下四个是解绳子动作  紧接着是粽子消失  肉出现
+			getElement("c_shengzi").className = "c_shengzi_2";
+		});
+		s2.add(500,function(){
+			getElement("c_shengzi").className = "c_shengzi_3";
+		});
+		s2.add(1000,function(){
+			getElement("c_shengzi").className = "c_shengzi_4";
+			getElement("caption").className = "caption caption_rock";
+		});
+		s2.add(1500,function(){
+			getElement("c_shengzi").className = "c_shengzi_0";
+		});
+		s2.add(2000,function(){
+			getElement("c_zongzi").className = "c_zongzi c_zongzi_out";
+			getElement("c_zongzirou").className = "c_zongzirou c_zongzirou_in";
+			getElement("c_zuoye").className = "c_zuoye c_zuoye_in";
+			getElement("c_youye").className = "c_youye c_youye_in";
+		},"粽子肉出来了");
+		s2.add(2400,function(){//左右叶出现隐藏
+			getElement("c_zuoye").className = "c_zuoye c_zuoye_in c_zuoye_out";
+			getElement("c_youye").className = "c_youye c_youye_in c_youye_out";
+			getElement("c_t_1").className = "c_t_1 c_t_in";
+			getElement("c_t_2").className = "c_t_2 c_t_mirror_0";
+		});
+		s2.add(2700,function(){
+			getElement("c_diye").className = "c_diye c_diye_in";//帝业出现	
+			s3.start();		
+		});
+
+
+
+
+		//粽子旋转
+		var s3 = new Timeline();
+		s3.add(500,function(){
+			getElement("c_zongzirou").className = "c_zongzirou c_zongzirou_in c_zongzirou_1";
+		},"要转了");
+		s3.add(1000,function(){
+			getElement("c_zongzirou").className = "c_zongzirou c_zongzirou_in c_zongzirou_2";
+			getElement("c_t_1").className = "c_t_1 c_t_in c_t_view_2";
+		},"要转了");
+		s3.add(1500,function(){
+			getElement("c_zongzirou").className = "c_zongzirou c_zongzirou_in c_zongzirou_3";
+		},"要转了");
+		s3.add(2000,function(){
+			getElement("c_zongzirou").className = "c_zongzirou c_zongzirou_in c_zongzirou_4";
+		},"要转了");
+		s3.add(2500,function(){
+			getElement("c_zongzirou").className = "c_zongzirou c_zongzirou_in c_zongzirou_0";
+		},"要转了");
+		s3.add(3000,function(){
+			getElement("c_zongzirou").className = "c_zongzirou c_zongzirou_in c_zongzirou_4";
+		},"要转了");
+		s3.add(3500,function(){
+			getElement("c_zongzirou").className = "c_zongzirou c_zongzirou_in c_zongzirou_3";
+		},"要转了");
+		s3.add(4000,function(){
+			getElement("c_zongzirou").className = "c_zongzirou c_zongzirou_in c_zongzirou_2";
+		},"要转了");
+		s3.add(4500,function(){
+			getElement("c_zongzirou").className = "c_zongzirou c_zongzirou_in c_zongzirou_1";
+		},"要转了");
+		s3.add(5000,function(){
+			getElement("c_zongzirou").className = "c_zongzirou c_zongzirou_in c_zongzirou_0";
+		},"要转了");
+		s3.add(5500,function(){
+			s3.start();
+		});
+
+
+		//图片加载器
+		var imgs = ['images/zzr_2.png','images/zzr_3.png','images/zzr_4.png'];
+		var imgs_onload = function(){
+			imgs.pop();//???????????????????????????????????????????/
+			if(imgs.length ==0){
+				s1.start();
+			}
+		}
+		for(s in imgs){
+			var img = new Image;
+			img.onload = imgs_onload;
+			img.src = imgs[s];
+		}
+
+
+
+
+
+
+
+		s1.start();
+		//先写好怎么用
+	</script>
+</body>
+</html>
